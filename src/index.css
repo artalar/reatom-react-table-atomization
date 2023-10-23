@@ -1,0 +1,22 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: monospace;
+}
+
+.head {
+  display: flex;
+}
+
+.head nav ul {
+  display: flex;
+  gap: 2em;
+}
+
+.logout {
+  height: 2em;
+  margin-left: auto;
+}
