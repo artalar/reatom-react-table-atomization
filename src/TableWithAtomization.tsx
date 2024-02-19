@@ -10,12 +10,12 @@ import TextField from '@mui/material/TextField'
 import { reatomComponent } from '@reatom/npm-react'
 import { atomizedRows } from './data'
 
-const Cell = reatomComponent<TableCellProps & { atom: AtomMut }>(
-  ({ ctx, atom, ...tableCellProps }) => (
+const Cell = reatomComponent<TableCellProps & { model: AtomMut<number> }>(
+  ({ ctx, model, ...tableCellProps }) => (
     <TableCell {...tableCellProps}>
       <TextField
-        value={ctx.spy(atom)}
-        onChange={(e) => atom(ctx, e.currentTarget.value)}
+        value={ctx.spy(model)}
+        onChange={(e) => model(ctx, Number(e.currentTarget.value))}
         label={tableCellProps.children}
         variant="standard"
       />
@@ -46,16 +46,16 @@ export const TableWithAtomization = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <Cell atom={row.calories} align="right">
+              <Cell model={row.calories} align="right">
                 calories
               </Cell>
-              <Cell atom={row.fat} align="right">
+              <Cell model={row.fat} align="right">
                 fat
               </Cell>
-              <Cell atom={row.carbs} align="right">
+              <Cell model={row.carbs} align="right">
                 carbs
               </Cell>
-              <Cell atom={row.protein} align="right">
+              <Cell model={row.protein} align="right">
                 protein
               </Cell>
             </TableRow>
